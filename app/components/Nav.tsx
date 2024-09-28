@@ -1,8 +1,13 @@
+import React from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 interface NavItem {
   label: string;
   hasDropdown: boolean;
+}
+
+interface NavProps {
+  className?: string;
 }
 
 export const navItems: NavItem[] = [
@@ -15,6 +20,7 @@ export const navItems: NavItem[] = [
   { label: "healing stories", hasDropdown: true },
   { label: "workshop login", hasDropdown: false },
 ];
+
 export const NavItem = ({ label, hasDropdown }: NavItem): JSX.Element => {
   return (
     <li
@@ -30,9 +36,9 @@ export const NavItem = ({ label, hasDropdown }: NavItem): JSX.Element => {
   );
 };
 
-const Nav = ({ className }): JSX.Element => {
+const Nav = ({ className }: NavProps): JSX.Element => {
   return (
-    <div className={`${className} uppercase text-sm cursor-pointer  `}>
+    <div className={`${className} uppercase text-sm cursor-pointer`}>
       <ul className="flex justify-center items-center gap-4 flex-wrap">
         {navItems.map((item, index) => (
           <NavItem key={index} {...item} />
@@ -41,4 +47,5 @@ const Nav = ({ className }): JSX.Element => {
     </div>
   );
 };
+
 export default Nav;

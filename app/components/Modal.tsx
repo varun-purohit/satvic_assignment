@@ -13,7 +13,6 @@ import ModalStep2 from "./ModalStep2";
 interface ModalProps {
   close: () => void;
   title: string;
-  description: string;
   startDate: string;
   duration: string;
   language: string;

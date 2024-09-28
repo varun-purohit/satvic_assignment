@@ -25,10 +25,16 @@ interface WorkshopCardProps {
   reviews: number;
 }
 
+interface ModalData {
+  title: string;
+  startDate: string;
+  duration: string;
+  language: string;
+}
+
 const WorkshopCard = ({
   title,
   description,
-  instructorDesc,
   startDate,
   duration,
   language,
@@ -39,8 +45,8 @@ const WorkshopCard = ({
   reviews,
 }: WorkshopCardProps) => {
   const [modal, setModal] = useState(false);
-  const [modalData, setModalData] = useState<WorkshopCardProps | null>(null);
-  const openModal = (data: WorkshopCardProps) => {
+  const [modalData, setModalData] = useState<ModalData | null>(null);
+  const openModal = (data: ModalData) => {
     setModal(true);
     setModalData(data);
   };
@@ -132,7 +138,7 @@ const WorkshopCard = ({
           </div>
         </div>
       </div>
-      {modal && <Modal close={closeModal} {...modalData} />}
+      {modal && modalData && <Modal close={closeModal} {...modalData} />}
     </div>
   );
 };

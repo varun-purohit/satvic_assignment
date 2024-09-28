@@ -11,19 +11,16 @@ export const PhoneNumberInput = () => {
 
   const countryOptions = [{ code: "+91", label: "India" }];
 
-  // Toggle the dropdown visibility
   const toggleDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
     setIsDropdownOpen((prevState) => !prevState);
   };
 
-  // Update the country code when an option is selected
   const handleCountrySelect = (code: string) => {
     setSelectedCountryCode(code);
     setIsDropdownOpen(false);
   };
 
-  // Close the dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -39,7 +36,6 @@ export const PhoneNumberInput = () => {
     };
   }, []);
 
-  // Ensure only numeric values for the phone number input
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
     setPhoneNumber(numericValue);
@@ -74,7 +70,6 @@ export const PhoneNumberInput = () => {
           </button>
           <div className="h-6 border-l border-slate-400 ml-2 "></div>
 
-          {/* Dropdown menu */}
           {isDropdownOpen && (
             <div
               ref={dropdownMenuRef}
