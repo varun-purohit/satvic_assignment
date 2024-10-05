@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        raleway: ["var(--font-raleway)"],
+        nunito: ["var(--font-nunito)"],
+      },
     },
   },
   plugins: [],

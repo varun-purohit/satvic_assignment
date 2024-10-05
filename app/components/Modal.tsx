@@ -47,57 +47,59 @@ const Modal = ({ close, title, startDate, duration, language }: ModalProps) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-end md:items-center justify-center ${
+      className={`fixed inset-0 z-50 flex items-end md:items-center justify-center transition-all duration-300 ease-in-out ${
         step === 1
-          ? "md:bg-black md:bg-opacity-80"
+          ? "bg-black bg-opacity-80"
           : "bg-white md:bg-black md:bg-opacity-80"
       }`}
     >
       <div
-        className={`bg-white relative p-6 rounded-t-lg md:rounded-lg w-full md:max-w-md ${
-          step === 1 ? "h-1/2 md:h-[85%]" : "h-full md:h-[85%]"
-        } overflow-auto transition-all duration-300 ease-in-out`}
+        className={`bg-[#f8f8f8] flex flex-col rounded-t-2xl md:rounded-xl w-full md:max-w-md relative transition-all duration-300 ease-in-out
+           ${step === 1 ? "h-[60%] md:h-[80%]" : "h-full md:h-[85%]"}`}
       >
-        <div className="flex items-center gap-2">
-          <ProgressBar progress={100} />
-          <ProgressBar progress={step === 2 ? 100 : 0} />
+        <div className="flex-grow overflow-auto pt-6 px-7">
+          <div className="flex items-center gap-2 mb-2">
+            <ProgressBar progress={100} />
+            <ProgressBar progress={step === 2 ? 100 : 0} />
+          </div>
+          <h2 className="text-base text-[#363636] font-semibold mb-2 ">
+            {title}
+          </h2>
+          <div className="flex text-sm gap-2 mb-4 text-slate-400">
+            {iconTextData.map((item, index) => (
+              <IconText
+                key={index}
+                iconSrc={item.iconSrc}
+                text={item.text}
+                alt={item.alt}
+                width={20}
+                height={20}
+              />
+            ))}
+          </div>
+          <div className="border rounded-md mb-4 shadow-[0px_4px_20px_0px_#2B2B2B14]">
+            <p className="pt-2 pb-1 px-3 text-sm font-semibold">
+              Session timings: 8 - 8:45 am (IST)
+            </p>
+            <p className="bg-[#337ab71a] flex gap-2.5 items-center text-xs px-3 py-1.5 text-[#337ab7]">
+              <span>
+                <GoDeviceCameraVideo />
+              </span>
+              Recording Available for 24 hours
+            </p>
+          </div>
+          <hr className="mb-4" />
+          {step === 1 ? <ModalStep1 /> : <ModalStep2 />}
         </div>
-        <h2>{title}</h2>
-        <div className="flex text-sm gap-2 mt-4 text-slate-400">
-          {iconTextData.map((item, index) => (
-            <IconText
-              key={index}
-              iconSrc={item.iconSrc}
-              text={item.text}
-              alt={item.alt}
-              width={20}
-              height={20}
-            />
-          ))}
-        </div>
-        <div className="border rounded-md my-4">
-          <p className="p-2">Session timings: 8 - 8:45 am (IST)</p>
-          <p className="bg-blue-100 flex items-center gap-2 text-sm px-2 py-1 text-sky-600">
-            <span>
-              <GoDeviceCameraVideo />
-            </span>
-            Recording Available for 24 hours
-          </p>
-        </div>
-        <hr />
-        {step === 1 ? <ModalStep1 /> : <ModalStep2 />}
-        <div className="p-4 shadow-inner absolute bottom-0 left-0 w-full z-100">
+        <div className="px-12 py-7 mt-auto bg-white rounded-b-md shadow-[0px_-4px_20px_0px_#2B2B2B0F] w-full md:rounded-b-lg lg:rounded-b-xl">
           <button
             onClick={handleClick}
-            className="w-full p-2 bg-sky-600 text-white rounded-md font-semibold"
+            className="w-full p-2 bg-[#337ab7] text-base font-bold text-white rounded-xl"
           >
             {step === 1 ? "Continue" : "Continue to payment"}
           </button>
         </div>
-        <button
-          className="absolute top-[10px] right-4 text-3xl"
-          onClick={close}
-        >
+        <button className="absolute top-2.5 right-4 text-3xl" onClick={close}>
           <IoIosClose />
         </button>
       </div>

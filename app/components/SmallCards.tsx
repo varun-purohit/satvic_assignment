@@ -3,7 +3,7 @@ import calender from "../img/calender.png";
 import sandClock from "../img/sandClock.png";
 import globe from "../img/globe.png";
 import IconText from "./IconText";
-import { StaticImageData } from "next/image";
+import { StaticImageData } from "next/legacy/image";
 
 interface SmallCardsProps {
   icon: "calendar" | "clock" | "globe";
@@ -21,7 +21,7 @@ const SmallCards = ({ icon, text, para }: SmallCardsProps) => {
   const iconSrc = iconMap[icon];
 
   return (
-    <div className="shadow-md md:p-3 lg:p-4 border rounded-lg gap-1">
+    <div className="shadow-[0px_4px_20px_0px_rgba(43,43,43,0.08)] md:py-4 md:px-3 lg:py-5 lg:px-4 border rounded-lg gap-1">
       <IconText
         iconSrc={iconSrc}
         text={text}

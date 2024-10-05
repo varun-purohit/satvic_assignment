@@ -1,54 +1,15 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
 import flag from "../img/india-flag-icon.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const PhoneNumberInput = () => {
-  const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const dropdownMenuRef = useRef<HTMLDivElement>(null);
-
-  const countryOptions = [{ code: "+91", label: "India" }];
-
-  const toggleDropdown = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    setIsDropdownOpen((prevState) => !prevState);
-  };
-
-  const handleCountrySelect = (code: string) => {
-    setSelectedCountryCode(code);
-    setIsDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownMenuRef.current &&
-        !dropdownMenuRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
-    setPhoneNumber(numericValue);
-  };
+  const selectedCountryCode = "+91";
 
   return (
-    <div className="w-full shadow-[0px_4px_20px_0px_#2B2B2B14] py-1 rounded-md mt-4">
+    <div className="w-full shadow-[0px_4px_20px_0px_#2B2B2B14] py-1 rounded-xl mt-2 md:mt-4">
       <div className="relative mt-2">
-        <div className="absolute top-2 left-0 flex items-center pl-3">
-          <button
-            onClick={toggleDropdown}
-            className="h-full text-sm flex gap-1 justify-center items-center bg-transparent text-slate-700 focus:outline-none"
-          >
+        <div className="absolute top-1 left-0 flex items-center pl-3">
+          <button className="h-full text-sm flex gap-1 justify-center items-center bg-transparent text-slate-700 focus:outline-none">
             <span>
               <Image src={flag} height={24} width={24} alt="flag" />
             </span>
@@ -69,33 +30,13 @@ export const PhoneNumberInput = () => {
             </svg>
           </button>
           <div className="h-6 border-l border-slate-400 ml-2 "></div>
-
-          {isDropdownOpen && (
-            <div
-              ref={dropdownMenuRef}
-              className="min-w-[150px] absolute left-0 w-full mt-10 bg-white rounded-md z-10"
-            >
-              <ul>
-                {countryOptions.map((option) => (
-                  <li
-                    key={option.code}
-                    className="px-4 py-2 text-slate-600 hover:bg-slate-50 text-sm cursor-pointer"
-                    onClick={() => handleCountrySelect(option.code)}
-                  >
-                    {option.label} ({option.code})
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div className="min-w-[150px] absolute left-0 w-full mt-10 bg-white rounded-md z-10"></div>
         </div>
 
         <input
           type="tel"
-          className=" ml-6 w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md pr-3 pl-20 py-2 transition duration-300 ease focus:outline-none"
+          className=" ml-6 w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-xl pr-3 pl-20 py-2 focus:outline-none"
           placeholder="9999999999"
-          value={phoneNumber}
-          onChange={handlePhoneNumberChange}
           pattern="[0-9]*"
           inputMode="numeric"
           maxLength={12}

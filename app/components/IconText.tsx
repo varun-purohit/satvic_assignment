@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/legacy/image";
 
 interface IconTextProps {
   iconSrc: StaticImageData;
@@ -21,8 +21,12 @@ const IconText = ({
     <div className="flex items-center gap-2">
       <Image src={iconSrc} alt={alt} width={width} height={height} />
       <div className="flex flex-col">
-        <span>{text}</span>
-        {para && <span className="text-[11px] text-slate-500">{para}</span>}
+        <span className=" md:text-xs lg:text-sm text-[#363636]">{text}</span>
+        {para && (
+          <span className="md:text-[11px] lg:text-xs text-[#818184]">
+            {para}
+          </span>
+        )}
       </div>
     </div>
   );

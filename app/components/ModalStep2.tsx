@@ -14,11 +14,16 @@ const ModalStep2 = () => {
 
   return (
     <div className="flex flex-col">
-      <Input value="Name" />
-      <Input value="Email" />
-      <Input value="Enter your city" />
+      <div className="flex flex-col gap-4 mb-3">
+        <Input value="Name" />
+        <Input value="Email" />
+        <Input value="Enter your city" />
+      </div>
+
       <div className="text-xs">
-        <p>This workshop can help you heal the following:</p>
+        <p className="font-semibold">
+          This workshop can help you heal the following:
+        </p>
         <div className="mt-1 overflow-x-auto pb-2">
           <div className="flex gap-2 w-max">
             {conditions.map((condition, index) => (

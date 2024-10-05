@@ -15,26 +15,28 @@ const Header = () => {
 
   return (
     <>
-      <div
+      <section
         id="main-header"
-        className="fixed top-0 left-0 right-0 z-50 py-6 px-8 bg-white"
+        className="fixed top-0 left-0 right-0 z-50 py-6 px-6 bg-white"
       >
-        <div className="flex items-center justify-between">
-          <Logo className="w-1/3 md:w-auto" />
-          <Nav className="hidden md:flex" />
-          <div className="flex items-center">
-            <div className="hidden md:block">
-              <Icon />
-            </div>
-            <div className="md:hidden">
-              <FaBars
-                onClick={toggleSidebar}
-                className="text-xl cursor-pointer"
-              />
+        <div className="px-2.5">
+          <div className="flex items-center justify-between">
+            <Logo className="w-1/3 md:w-auto" />
+            <Nav className="hidden md:flex" />
+            <div className="flex items-center">
+              <div className="hidden md:block">
+                <Icon />
+              </div>
+              <div className="md:hidden">
+                <FaBars
+                  onClick={toggleSidebar}
+                  className="text-xl cursor-pointer"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
     </>
   );

@@ -38,8 +38,11 @@ export const NavItem = ({ label, hasDropdown }: NavItem): JSX.Element => {
 
 const Nav = ({ className }: NavProps): JSX.Element => {
   return (
-    <div className={`${className} uppercase text-sm cursor-pointer`}>
-      <ul className="flex justify-center items-center gap-4 flex-wrap">
+    <div
+      className={`${className} uppercase text-sm cursor-pointer font-semibold text-[#3C3C3C];
+]`}
+    >
+      <ul className="flex justify-center items-center gap-4 flex-wrap font-raleway">
         {navItems.map((item, index) => (
           <NavItem key={index} {...item} />
         ))}

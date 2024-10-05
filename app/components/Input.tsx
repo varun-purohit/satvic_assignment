@@ -4,11 +4,11 @@ interface inputProps {
 
 export const Input = ({ value }: inputProps) => {
   return (
-    <div className="relative my-2 shadow-[0px_4px_20px_0px_#2B2B2B14] rounded-md">
+    <div className="relative shadow-[0px_4px_20px_0px_#2B2B2B14] rounded-xl">
       <input
         type="text"
         id={value}
-        className="block rounded-md px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900  border-0 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        className="block rounded-xl px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900  border-0 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder=" "
       />
       <label

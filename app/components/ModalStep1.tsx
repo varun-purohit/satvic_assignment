@@ -4,8 +4,10 @@ import { PhoneNumberInput } from "./MobileInput";
 export const ModalStep1 = () => {
   return (
     <>
-      <div className="my-2">
-        <p className="text-xl">Your mobile number</p>
+      <div className="my-1">
+        <p className=" text-base md:text-2xl font-semibold">
+          Your mobile number
+        </p>
         <PhoneNumberInput />
       </div>
       <p className="text-gray-500 flex items-center gap-1 text-xs">
